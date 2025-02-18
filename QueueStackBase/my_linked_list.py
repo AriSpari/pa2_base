@@ -5,13 +5,13 @@ class Node:
 
 
 class LinkedList():
-    def __init__(self, head, tail, size):
+    def __init__(self):
         """
         standard shit
         """
-        self.head = head
-        self.tail = tail
-        self.size = size
+        self.head = None
+        self.tail = None
+        self.size = 0
         
     
     def push_front(self, data):
@@ -21,6 +21,8 @@ class LinkedList():
         node = Node(data)
         node.next = self.head
         self.head = node
+        if size == 0:
+            self.tail = node
         self.size += 1
     
     def pop_front(self):
@@ -35,8 +37,11 @@ class LinkedList():
         new_node = Node(data)
         if self.head == None:
             self.head = new_node
+            self.tail = new_node
         else:
             self.tail.next = new_node
+            self.tail = new_node
+        
         self.size += 1
         
 
@@ -50,13 +55,15 @@ class LinkedList():
             return None
         
         if node.next == None:
+            self.tail = None
             self.head = None
-            return node.value
+            self.size -= 1
+            return node.data
         
-        while node.next != None and node.next.next is not None:
+        while node.next is not None and node.next.next is not None:
             node = node.next
-            
-        ret_value = node.next.value
+        
+        ret_value = node.next.data
         node.next = None
         self.tail = node
 
@@ -64,19 +71,32 @@ class LinkedList():
 
         return ret_value
 
-
-        
-        
-            
-
     def get_size(self):
         return self.size
 
     def __str__(self):
+        ret_str = ""
         node = self.head
         while node != None:
-            print(node)
+            ret_str += str(node.data) + "\n"
             node = node.next
-    
+        return ret_str
+        
+        
+        
+ari = LinkedList()
 
+print(ari)
 
+ari.push_back(1)
+print(ari)
+ari.push_back(2)
+print(ari)
+ari.push_back(3)
+ari.push_back(4)
+ari.push_back(5)
+print(ari)
+print("test")
+print(ari.pop_back())
+print("just popped")
+print(ari)

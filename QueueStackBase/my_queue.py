@@ -8,9 +8,10 @@ class Queue:
         
         #self.container = LinkedList()
         #self.container = ArrayDeque()
+        pass
 
     def add(self, data):
-        pass
+        
     
     def remove(self):
         pass
