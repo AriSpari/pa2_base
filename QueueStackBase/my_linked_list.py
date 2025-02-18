@@ -29,6 +29,8 @@ class LinkedList():#mér sýnist allt saman virka
         """
         saves the value of the head node as a variable, reassigns the head to the next node and returns the value of the original head
         """
+        if self.head == None:
+            return
         ret_val = self.head.data
         self.head = self.head.next
         return ret_val
@@ -78,11 +80,18 @@ class LinkedList():#mér sýnist allt saman virka
         ret_str = ""
         node = self.head
         while node != None:
-            ret_str += str(node.data) + "\n"
+            ret_str += str(node.data) + " "
             node = node.next
-        return ret_str
+        return ret_str.strip()
         
         
         
-ari = LinkedList()
+# ari = LinkedList()
 
+# ari.push_back(1)
+# ari.push_back(2)
+# ari.push_back(3)
+# ari.push_back(4)
+# ari.push_back(5)
+
+# print(ari)

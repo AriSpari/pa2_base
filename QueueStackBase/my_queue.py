@@ -10,13 +10,13 @@ class Queue:
         self.container = ArrayDeque()
 
     def add(self, data):
-        pass
+        self.container.push_front(data)
     
     def remove(self):
-        pass
+        return self.container.pop_back()
 
     def get_size(self):
-        return 0
+        return self.container.get_size()
 
     def __str__(self):
-        return ""
+        return self.container.__str__()
