@@ -7,11 +7,10 @@ class Queue:
         # Stack must have the container you dont choose for Queue
         
         #self.container = LinkedList()
-        #self.container = ArrayDeque()
-        pass
+        self.container = ArrayDeque()
 
     def add(self, data):
-        
+        pass
     
     def remove(self):
         pass
