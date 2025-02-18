@@ -64,7 +64,7 @@ class LinkedList():
             
 
     def get_size(self):
-        return 0
+        return self.size
 
     def __str__(self):
         node = self.head
