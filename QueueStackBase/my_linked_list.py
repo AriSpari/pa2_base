@@ -5,12 +5,13 @@ class Node:
 
 
 class LinkedList():
-    def __init__(self):
+    def __init__(self, head, tail, size):
         """
         standard shit
         """
         self.head = head
         self.tail = tail
+        self.size = size
         
     
     def push_front(self, data):
@@ -20,6 +21,7 @@ class LinkedList():
         node = Node(data)
         node.next = self.head
         self.head = node
+        self.size += 1
     
     def pop_front(self):
         """
@@ -35,6 +37,7 @@ class LinkedList():
             self.head = new_node
         else:
             self.tail.next = new_node
+        self.size += 1
         
 
     def pop_back(self):
@@ -56,6 +59,9 @@ class LinkedList():
         ret_value = node.next.value
         node.next = None
         self.tail = node
+
+        self.size -= 1
+
         return ret_value
 
 
