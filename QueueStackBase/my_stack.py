@@ -6,17 +6,17 @@ class Stack:
         # Pick one of these to use.
         # Stack must have the container you dont choose for Queue
         
-        #self.container = LinkedList()
+        self.container = LinkedList()
         #self.container = ArrayDeque()
 
     def push(self, data):
-        pass
+        self.container.push_back(data)
     
     def pop(self):
-        pass
+        return self.container.pop_back()
     
     def get_size(self):
-        return 0
+        return self.container.get_size()
 
     def __str__(self):
-        return ""
+        return self.container.__str__()
