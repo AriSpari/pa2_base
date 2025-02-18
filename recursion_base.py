@@ -14,10 +14,20 @@ def get_size(head):
     return 0
 
 def reverse_list(head):
-    return head
+    if head is None or head.next is None:  # Base case: if list is empty or has one node
+        return head
+    new_head = reverse_list(head.next)  # Reverse the rest of the list
+    head.next.next = head  # Make the next node point to the current node
+    head.next = None  # Set the current node's next to None
+    return new_head 
 
 def palindrome(head):
-    return True
+    if head is None or head.next is None:
+        return True
+    if head == reverse_list(head):
+        head = head.next
+        palindrome(head)
+    
 
 if __name__ == "__main__":
     ##
