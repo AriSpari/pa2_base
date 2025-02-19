@@ -11,7 +11,13 @@ def print_to_screen(head):
         print("")
 
 def get_size(head):
-    return 0
+    if head == None: # base case
+        return 0
+    
+    if head.next == None: #if head.next is none that means we are at the last node in our list. 
+        return 1
+    else:
+        return 1 + get_size(head.next) # count the node we're at and call the function again with the next node as the argument
 
 def reverse_list(head):
     if head is None or head.next is None:  # Base case: if list is empty or has one node
@@ -22,12 +28,34 @@ def reverse_list(head):
     return new_head 
 
 def palindrome(head):
-    if head is None or head.next is None:
+    """
+    creates a new function that takes a pointer to head as an argument. Because it is a pointer it doesn't change with each recursion
+    effectively allowing us to maintain a constant pointer to the head node despite moving deeper into the recursive calls. 
+    we make the recursive call before the checks so that they are done while returning from the calls (iterating backwards through the list). 
+    For each step backwards through the list we compare the element to it's corresponding element at the front and then update the front pointer
+    to the next element. if any check returns a False, that false gets sent up the recursive chain and the 'shell' function returns the False. 
+    """
+     
+    def check_palindrome(front_ref, current):
+        if current is None: # base case
+            return True 
+
+        
+        is_pal = check_palindrome(front_ref, current.next)
+
+        if not is_pal: # checks if previous nodes match
+            return False
+
+        if front_ref[0].data != current.data: # this is where we compare the node we're at to the correct node at the front of the list
+            return False
+
+        front_ref[0] = front_ref[0].next # move the front pointer to the next node
+
         return True
-    if head == reverse_list(head):
-        head = head.next
-        palindrome(head)
-    
+
+    return check_palindrome([head], head)  # Pass front node by reference
+
+
 
 if __name__ == "__main__":
     ##

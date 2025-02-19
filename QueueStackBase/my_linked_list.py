@@ -33,9 +33,13 @@ class LinkedList():#mér sýnist allt saman virka
             return
         ret_val = self.head.data
         self.head = self.head.next
+        self.size -= 1
         return ret_val
     
     def push_back(self, data):#virkar
+        """
+        creates a new node. if it's the first node to be creaated then it is both the head and the tail, otherwise it is just the tail. also links the old tail to this new one.
+        """
         new_node = Node(data)
         if self.head == None:
             self.head = new_node
@@ -74,9 +78,15 @@ class LinkedList():#mér sýnist allt saman virka
         return ret_value
 
     def get_size(self):#virkar
+        """
+        The class keeps track of the size of the list so we simply return that value. 
+        """
         return self.size
 
     def __str__(self):#virkar
+        """
+        recursively builds a string from the data in the nodes and strips the trailing space. 
+        """
         ret_str = ""
         node = self.head
         while node != None:
@@ -85,13 +95,3 @@ class LinkedList():#mér sýnist allt saman virka
         return ret_str.strip()
         
         
-        
-# ari = LinkedList()
-
-# ari.push_back(1)
-# ari.push_back(2)
-# ari.push_back(3)
-# ari.push_back(4)
-# ari.push_back(5)
-
-# print(ari)
